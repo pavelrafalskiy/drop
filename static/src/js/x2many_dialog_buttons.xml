@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-inherit="web.X2ManyFieldDialogDefaultButtons" t-inherit-mode="extension">
+        <xpath expr="//button[contains(@class, 'o_form_button_save_new')]" position="replace"/>
+
+        <xpath expr="//t[@t-if='canCreate']/button[contains(@class, 'o_form_button_save')]" position="replace">
+            <button class="btn btn-primary o_form_button_save" t-on-click="save" data-hotkey="c">Save</button>
+        </xpath>
+    </t>
+</templates>

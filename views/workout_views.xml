@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_workout_event_form" model="ir.ui.view">
+        <field name="name">workout.event.form</field>
+        <field name="model">workout.event</field>
+        <field name="arch" type="xml">
+            <form string="Workout">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Workout Name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Morning Cardio" required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="start_time"/>
+                        </group>
+                        <group>
+                            <field name="is_notification_sent" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workout_event_list" model="ir.ui.view">
+        <field name="name">workout.event.list</field>
+        <field name="model">workout.event</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="start_time"/>
+                <field name="is_notification_sent" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_workout_event" model="ir.actions.act_window">
+        <field name="name">Workouts</field>
+        <field name="res_model">workout.event</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_workout_root" name="Workout App" sequence="10"/>
+    <menuitem id="menu_workout_event" name="My Workouts" parent="menu_workout_root" action="action_workout_event" sequence="10"/>
+</odoo>

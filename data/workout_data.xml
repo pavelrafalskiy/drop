@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="channel_workout" model="queue.job.channel">
+            <field name="name">workout</field>
+            <field name="parent_id" ref="queue_job.channel_root"/>
+        </record>
+
+        <record id="job_function_workout_notification" model="queue.job.function">
+            <field name="model_id" ref="model_workout_event"/>
+            <field name="method">action_send_notification</field>
+            <field name="channel_id" ref="channel_workout"/>
+            <field name="retry_pattern" eval="{1: 60, 5: 300, 10: 600}"/>
+            <field name="related_action" eval='{"func_name": "action_workout_view"}'/>
+        </record>
+    </data>
+</odoo>
